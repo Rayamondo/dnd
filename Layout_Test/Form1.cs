@@ -16,19 +16,21 @@ namespace Layout_Test
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Size f = Form1.ActiveForm.Size;
+            frmSize = Form1.ActiveForm.Size;
             flwCharButtons.Margin = new Padding(0);
             flwCharScreen.Margin = new Padding(0);
             flwCharButtons.Location = new Point(0, 0);
-            flwCharButtons.Size = new Size((f.Width / 100) * 20, f.Height);
+            flwCharButtons.Size = new Size((frmSize.Width / 100) * 20, frmSize.Height);
             flwCharScreen.Location = new Point(0 + flwCharButtons.Width, 0);
-            flwCharScreen.Size = new Size(f.Width - flwCharButtons.Size.Width, f.Height);
+            flwCharScreen.Size = new Size(frmSize.Width - flwCharButtons.Size.Width, frmSize.Height);
 
             foreach (Control c in flwCharButtons.Controls)
                 c.Width = flwCharButtons.Width - 7;
         }
 
         public Interface ci = new Interface();
+        public LiteBox lb = new LiteBox();
+        public Size frmSize = new Size();
 
         private void buChar_add_Click(object sender, EventArgs e)
         {
@@ -129,10 +131,10 @@ namespace Layout_Test
 
         private void buChar_showAll_Click(object sender, EventArgs e)
         {
-            int w = flwCharScreen.Width / flwCharScreen.Controls.Count;
-            int i = 0;
             if (flwCharScreen.Controls.Count != 0)
             {
+                int w = flwCharScreen.Width / flwCharScreen.Controls.Count;
+                int i = 0;
                 foreach (Panel p in flwCharScreen.Controls)
                 {
                     p.Size = new Size(w, flwCharScreen.Height);

@@ -5,6 +5,30 @@ using System.Windows.Forms;
 
 namespace Layout_Test.Classes
 {
+    //LiteBox does not work yet, check out this link:
+    //http://stackoverflow.com/questions/32400320/any-trick-to-use-opacity-on-a-panel-in-visual-studio-window-form
+    public class LiteBox
+    {
+        public Panel background { get; set; }
+        public Panel litebox { get; set; }
+
+        public LiteBox GenerateLiteBox(Size frm)
+        {
+            LiteBox lb = new LiteBox();
+            Panel pbg = new Panel();
+            Panel pbf = new Panel();
+            pbg.Name = "pnlLB_BG";
+            pbg.Size = frm;
+            pbg.BackColor = Color.FromArgb(75, Color.Black);
+            pbf.Name = "pnlLB_LB";
+            pbf.Size = new Size(200, 300);
+            pbf.BackColor = Color.WhiteSmoke;
+            lb.background = pbg;
+            lb.litebox = pbf;
+            return lb;
+        }
+    }
+
     public class Interface
     {
         public string charName { get; set; }
@@ -91,7 +115,7 @@ namespace Layout_Test.Classes
             cd.BackColor = Color.Crimson;
             cd.ForeColor = Color.White;
             cd.AutoSize = true;
-            cd.Location = new Point((panel.Width - cd.Width) - 30, 10);
+            cd.Location = new Point(panel.Width - cd.Width, 10);
             return cd;
         }
 
